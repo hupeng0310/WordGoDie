@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
+    
+    <!-- 开启注解扫描，要扫描的是service和dao层的注解，要忽略web层注解，因为web层让SpringMVC框架去管理 -->
+    <context:component-scan base-package="com.hupeng">
+        <!-- 配置要忽略的注解 -->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    
+    <!-- Spring整合MyBatis -->
+    <!-- 1. 配置数据源 -->
+    <context:property-placeholder location="classpath:db.properties"/>
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    	<!-- 配置连接数据库的基本信息 -->
+		<property name="driverClass" value="${jdbc.driver}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<!-- 数据库连接池其他配置 -->
+        <!-- 配置初始化大小 最大和最小 -->
+        <property name="initialPoolSize" value="3"></property>
+        <property name="minPoolSize" value="1"></property>
+        <property name="maxPoolSize" value="20"></property>
+        <!-- 连接池在无空闲连接可用时一次性最多创建的新数据库连接数 -->
+        <property name="acquireIncrement" value="5"></property>
+        <!-- 连接的最大空闲时间，如果超过这个时间（秒），某个数据库连接还没有被使用，则会断开掉这个连接。
+        如果为0，则永远不会断开连接,即回收此连接 -->
+        <property name="maxIdleTime" value="30"/>
+    </bean>
+    
+    <!-- 2. 配置SqlSessionFactory工程对象 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <!-- 3. 配置dao接口所在的包 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.hupeng.dao" />
+    </bean>
+    
+	<!-- 配置Spring框架事务管理 -->
+	<!-- 1. 配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 2. 配置事务通知 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="query*" read-only="true"/>
+			<tx:method name="*" isolation="DEFAULT"/>
+		</tx:attributes>
+	</tx:advice>
+<!--	&lt;!&ndash; 3. 配置AOP增强 &ndash;&gt;-->
+<!--	<aop:config>-->
+<!--		<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.hupeng.service.imp.*(..))"/>-->
+<!--	</aop:config>-->
+</beans>
