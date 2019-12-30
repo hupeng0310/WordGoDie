@@ -16,4 +16,9 @@ public class VocabularyServiceImp implements VocabularyService {
     public List<Vocabulary> selectVocabularyById(int start, int end) {
         return iVocabularyDao.SelectVocabularyById(start,end);
     }
+
+    @Override
+    public int countVocabulary() {
+        return iVocabularyDao.countVocabulary();
+    }
 }

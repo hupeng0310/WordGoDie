@@ -10,5 +10,7 @@ import java.util.List;
 @Repository
 public interface IVocabularyDao {
     @Select("select * from vocabulary limit #{start},#{end}")
-    public List<Vocabulary> SelectVocabularyById(@Param("start") int start, @Param("end") int end);
+    List<Vocabulary> SelectVocabularyById(@Param("start") int start, @Param("end") int end);
+    @Select("select count(id) from vocabulary")
+    int countVocabulary();
 }
