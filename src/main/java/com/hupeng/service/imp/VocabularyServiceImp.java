@@ -1,6 +1,7 @@
 package com.hupeng.service.imp;
 
 import com.hupeng.dao.IVocabularyDao;
+import com.hupeng.entity.Exercises;
 import com.hupeng.entity.Vocabulary;
 import com.hupeng.service.VocabularyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,10 @@ public class VocabularyServiceImp implements VocabularyService {
     @Override
     public int countVocabulary() {
         return iVocabularyDao.countVocabulary();
+    }
+
+    @Override
+    public Exercises produceExercises(Vocabulary vocabulary) {
+        return null;
     }
 }
