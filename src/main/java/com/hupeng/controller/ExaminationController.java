@@ -23,7 +23,7 @@ public class ExaminationController {
     @ResponseBody
     public String test(){
         JSONObject json = new JSONObject();
-        json.put("vocabulary",vocabularyService.getVocabularies());
+        json.put("vocabulary",vocabularyService.getVocabularies(1));
         return json.toString();
     }
 }

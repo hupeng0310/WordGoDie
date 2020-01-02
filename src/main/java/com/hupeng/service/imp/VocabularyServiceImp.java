@@ -12,12 +12,13 @@ import java.util.List;
 
 @Service("vocabularyService")
 public class VocabularyServiceImp implements VocabularyService {
-    private static final int VOCABULARY_NUMBER = 20;
+    private static int VOCABULARY_NUMBER = 20;
     @Autowired
     IVocabularyDao iVocabularyDao;
 
-    private HashSet<Integer> getVocabulariesID() {
+    private HashSet<Integer> getVocabulariesID(int nums) {
         int maxVocabularyNumber = iVocabularyDao.countVocabulary();
+        VOCABULARY_NUMBER = nums > maxVocabularyNumber? maxVocabularyNumber: nums;
         HashSet<Integer> vocabulariesIDSet = new HashSet<Integer>();
         while(vocabulariesIDSet.size() < VocabularyServiceImp.VOCABULARY_NUMBER) {
             vocabulariesIDSet.add((int)(Math.random()*maxVocabularyNumber + 1));
@@ -26,8 +27,8 @@ public class VocabularyServiceImp implements VocabularyService {
     }
 
     @Override
-    public List<Vocabulary> getVocabularies() {
-        HashSet<Integer> vocabulariesIDSet = this.getVocabulariesID();
+    public ArrayList<Vocabulary> getVocabularies(int nums) {
+        HashSet<Integer> vocabulariesIDSet = this.getVocabulariesID(nums);
         ArrayList<Vocabulary> vocabularies = new ArrayList<Vocabulary>();
         for(int id:vocabulariesIDSet) {
             vocabularies.add(iVocabularyDao.SelectVocabularyById(id));
