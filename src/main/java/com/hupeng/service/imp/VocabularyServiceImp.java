@@ -17,8 +17,8 @@ public class VocabularyServiceImp implements VocabularyService {
 
     private HashSet<Integer> getVocabulariesID(int nums) {
         int maxVocabularyNumber = iVocabularyDao.countVocabulary();
-        VOCABULARY_NUMBER = nums > maxVocabularyNumber? maxVocabularyNumber: nums;
-        HashSet<Integer> vocabulariesIDSet = new HashSet<Integer>();
+        VOCABULARY_NUMBER = Math.min(nums, maxVocabularyNumber);
+        HashSet<Integer> vocabulariesIDSet = new HashSet<>();
         while(vocabulariesIDSet.size() < VocabularyServiceImp.VOCABULARY_NUMBER) {
             vocabulariesIDSet.add((int)(Math.random()*maxVocabularyNumber + 1));
         }
@@ -28,7 +28,7 @@ public class VocabularyServiceImp implements VocabularyService {
     @Override
     public ArrayList<Vocabulary> getVocabularies(int nums) {
         HashSet<Integer> vocabulariesIDSet = this.getVocabulariesID(nums);
-        ArrayList<Vocabulary> vocabularies = new ArrayList<Vocabulary>();
+        ArrayList<Vocabulary> vocabularies = new ArrayList<>();
         for(int id:vocabulariesIDSet) {
             vocabularies.add(iVocabularyDao.SelectVocabularyById(id));
         }
