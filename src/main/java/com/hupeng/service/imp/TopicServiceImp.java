@@ -39,9 +39,32 @@ public class TopicServiceImp implements TopicService {
         }
     }
 
+    private Topic produceTopic(Vocabulary vocabulary) {
+        Topic topic = new Topic();
+        if(vocabulary.getInterpretation_nd() != null && vocabulary.getPart_of_speech_nd() != null) {
+            //随机选择具有两个释义的单词中的一个作为topic的释义
+            //为1时选择第二个释义
+            int choiceContext = (int)(Math.random() + 0.5);
+            if(choiceContext ==1) {
+                topic.setWord(vocabulary.getWord());
+                topic.setIncompleteWord(getInCompleteWord(vocabulary.getWord()));
+                topic.setInterpretation(vocabulary.getInterpretation_nd());
+                topic.setPartOfSpeech(vocabulary.getPart_of_speech_nd());
+                return topic;
+            }
+        }
+        topic.setWord(vocabulary.getWord());
+        topic.setIncompleteWord(getInCompleteWord(vocabulary.getWord()));
+        topic.setInterpretation(vocabulary.getInterpretation());
+        topic.setPartOfSpeech(vocabulary.getPart_of_speech());
+        return topic;
+    }
     @Override
     public List<Topic> getTopics() {
-        ArrayList<Vocabulary> vocabularies = vocabularyService.getVocabularies(MAX_TOPIC_NUMBER);
-        return null;
+        ArrayList<Topic> topics = new ArrayList<>(MAX_TOPIC_NUMBER);
+        for(Vocabulary vocabulary : vocabularyService.getVocabularies(MAX_TOPIC_NUMBER)) {
+            topics.add(produceTopic(vocabulary));
+        }
+        return topics;
     }
 }

@@ -3,7 +3,7 @@ package com.hupeng.dao;
 public class Topic {
     String incompleteWord;
     String word;
-    String speech;
+    String partOfSpeech;
     String interpretation;
 
     public String getIncompleteWord() {
@@ -22,12 +22,12 @@ public class Topic {
         this.word = word;
     }
 
-    public String getSpeech() {
-        return speech;
+    public String getPartOfSpeech() {
+        return partOfSpeech;
     }
 
-    public void setSpeech(String speech) {
-        this.speech = speech;
+    public void setPartOfSpeech(String partOfSpeech) {
+        this.partOfSpeech = partOfSpeech;
     }
 
     public String getInterpretation() {

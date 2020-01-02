@@ -1,5 +1,6 @@
 package com.hupeng.controller;
 
+import com.hupeng.service.imp.TopicServiceImp;
 import com.hupeng.service.imp.VocabularyServiceImp;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +15,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Scope("prototype")
 public class ExaminationController {
     @Autowired
-    private VocabularyServiceImp vocabularyService;
+    private TopicServiceImp topicService;
 
     @RequestMapping(value = "/test",produces = "text/json;charset=utf-8")
     @ResponseBody
     public String test(){
         JSONObject json = new JSONObject();
-        json.put("vocabulary",vocabularyService.getVocabularies(1));
+        json.put("vocabulary",topicService.getTopics());
         return json.toString();
     }
 }
