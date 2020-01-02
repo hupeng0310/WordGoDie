@@ -22,9 +22,8 @@ public class ExaminationController {
     @RequestMapping(value = "/test",produces = "text/json;charset=utf-8")
     @ResponseBody
     public String test(){
-        System.out.println(vocabularyService.countVocabulary());
         JSONObject json = new JSONObject();
-        json.put("vocabulary",vocabularyService.selectVocabularyById(0,20));
+        json.put("vocabulary",vocabularyService.getVocabularies());
         return json.toString();
     }
 }
