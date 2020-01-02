@@ -3,11 +3,9 @@ package com.hupeng.service.imp;
 import com.hupeng.dao.Topic;
 import com.hupeng.entity.Vocabulary;
 import com.hupeng.service.TopicService;
-import com.hupeng.service.VocabularyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.print.DocFlavor;
 import java.util.ArrayList;
 import java.util.List;
 
