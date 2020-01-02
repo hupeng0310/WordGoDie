@@ -31,7 +31,7 @@ public class TopicServiceImp implements TopicService {
             wordCopy = wordCopy.replace(" ","");
             if(wordBuilder.length() - wordCopy.length() < realInCompleteLength) {
                 //生成需要隐藏字符的随机数索引
-                int ranDomIndex = (int)(Math.random() * wordLength * maxInComplete + 1);
+                int ranDomIndex = (int)(Math.random() * wordLength);
                 wordBuilder.replace(ranDomIndex,ranDomIndex + 1," ");
             }else {
                 return wordBuilder.toString();
