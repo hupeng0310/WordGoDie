@@ -2,8 +2,8 @@ package com.hupeng.service;
 
 import com.hupeng.entity.Vocabulary;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public interface VocabularyService {
-    List<Vocabulary> getVocabularies();
+    ArrayList<Vocabulary> getVocabularies(int nums);
 }
