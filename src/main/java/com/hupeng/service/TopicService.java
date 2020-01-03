@@ -1,6 +1,6 @@
 package com.hupeng.service;
 
-import com.hupeng.dao.Topic;
+import com.hupeng.entity.Topic;
 
 import java.util.List;
 

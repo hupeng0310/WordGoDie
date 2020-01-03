@@ -1,4 +1,4 @@
-package com.hupeng.dao;
+package com.hupeng.entity;
 
 public class Topic {
     String incompleteWord;

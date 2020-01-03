@@ -1,6 +1,6 @@
 package com.hupeng.service.imp;
 
-import com.hupeng.dao.Topic;
+import com.hupeng.entity.Topic;
 import com.hupeng.entity.Vocabulary;
 import com.hupeng.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
