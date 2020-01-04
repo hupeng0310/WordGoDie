@@ -19,7 +19,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         return true;
     }
     private boolean accountBySession(HttpSession session) {
-        return session.getAttribute("account")==null?false:true;
+        return session.getAttribute("account") != null;
     }
     private boolean accountByCookie(Cookie[] cookies) {
         if(cookies != null){

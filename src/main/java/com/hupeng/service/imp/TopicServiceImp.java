@@ -82,4 +82,12 @@ public class TopicServiceImp implements TopicService {
     public Topic getTopic() {
         return this.topicList.get(this.topicIndex++);
     }
+
+    @Override
+    public int getTopicNumber() {
+        if(this.topicList == null || this.topicList.size() == 0) {
+            initTopicList();
+        }
+        return this.topicList.size();
+    }
 }
