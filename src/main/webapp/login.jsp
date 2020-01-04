@@ -15,7 +15,7 @@
         <div class="layui-row layui-col-space15">
             <div class="layui-col-md12">
                 <div class="layui-card">
-                    <div class="layui-card-header" style="text-align: center;font-weight: bold">加入WordGoDie - - 登录</div>
+                    <div class="layui-card-header" style="text-align: center;font-weight: bold">登录WordGoDie - - 登录</div>
                     <div class="layui-card-body">
                         <div class="layui-form-item">
                             <label class="layui-form-label">账号:</label>
