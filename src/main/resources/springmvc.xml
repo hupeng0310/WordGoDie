@@ -32,8 +32,11 @@
 	<mvc:interceptors>
         <mvc:interceptor>
 			<mvc:mapping path="/page"/>
-			<mvc:mapping path="/examination"/>
-			<bean class="com.hupeng.controller.Interceptor.LoginInterceptor"></bean>
+			<bean class="com.hupeng.controller.Interceptor.LoginInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/examination/*"/>
+			<bean class="com.hupeng.controller.Interceptor.ExaminationInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
 </beans>
