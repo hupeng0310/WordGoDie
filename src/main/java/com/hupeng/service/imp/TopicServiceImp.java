@@ -17,6 +17,11 @@ public class TopicServiceImp implements TopicService {
     //设置单词中最大可缺失的字母比例
     private static final double maxInComplete = 0.5d;
 
+    private ArrayList<Topic> topicList = new ArrayList<>();
+
+    //指向topicList中下一个可以获取的单词对象的游标
+    private int topicIndex = 0;
+
     @Autowired
     VocabularyServiceImp vocabularyService;
 
@@ -59,12 +64,23 @@ public class TopicServiceImp implements TopicService {
         topic.setPartOfSpeech(vocabulary.getPart_of_speech());
         return topic;
     }
-    @Override
-    public List<Topic> getTopics() {
-        ArrayList<Topic> topics = new ArrayList<>(MAX_TOPIC_NUMBER);
-        for(Vocabulary vocabulary : vocabularyService.getVocabularies(MAX_TOPIC_NUMBER)) {
-            topics.add(produceTopic(vocabulary));
+
+    private void initTopicList() {
+        for(Vocabulary vocabulary:vocabularyService.getVocabularies(MAX_TOPIC_NUMBER)) {
+            this.topicList.add(produceTopic(vocabulary));
         }
-        return topics;
+    }
+
+    @Override
+    public boolean endOfTopic() {
+        if(this.topicList == null || this.topicList.size() == 0) {
+            initTopicList();
+        }
+        return this.topicIndex >= this.topicList.size();
+    }
+
+    @Override
+    public Topic getTopic() {
+        return this.topicList.get(this.topicIndex++);
     }
 }

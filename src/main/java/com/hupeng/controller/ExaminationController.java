@@ -17,8 +17,14 @@ public class ExaminationController {
     @RequestMapping(value = "/test",produces = "text/json;charset=utf-8")
     @ResponseBody
     public String test(){
-        JSONObject json = new JSONObject();
-        json.put("vocabulary",topicService.getTopics());
-        return json.toString();
+        JSONObject jsonObject;
+
+        if(!this.topicService.endOfTopic()) {
+            jsonObject = new JSONObject(topicService.getTopic());
+        }else {
+            jsonObject = new JSONObject();
+            jsonObject.put("error","endOfTopic");
+        }
+        return jsonObject.toString();
     }
 }
