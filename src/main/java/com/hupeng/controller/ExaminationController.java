@@ -3,7 +3,6 @@ import com.hupeng.service.TopicService;
 import com.hupeng.service.imp.TopicServiceImp;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 @Controller
@@ -38,8 +38,9 @@ public class ExaminationController {
     }
     @ModelAttribute
     public void getUserAccount(HttpServletRequest request) {
-        if(request.getSession().getAttribute("account") != null) {
-            this.userAccount = (String)request.getSession().getAttribute("account");
+        HttpSession session = request.getSession();
+        if(session.getAttribute("account") != null) {
+            this.userAccount = (String)session.getAttribute("account");
         } else if(request.getCookies() != null) {
             for(Cookie cookie : request.getCookies()) {
                 if(cookie.getName().equals("account")) {
