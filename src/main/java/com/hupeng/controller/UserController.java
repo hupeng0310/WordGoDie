@@ -27,7 +27,6 @@ public class UserController {
         user.setEmail(account);
         user.setAccount(account);
         user.setPassword(password);
-        System.out.println(user.toString());
         int loginStatue = userService.userLogin(user);
         switch (loginStatue) {
             case UserServiceImp.SUCCESS:
