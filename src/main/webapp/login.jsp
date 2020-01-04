@@ -7,7 +7,7 @@
         <script src="${pageContext.request.contextPath}/script/inputCheck.js"></script>
         <script src="${pageContext.request.contextPath}/script/login.js"></script>
     </head>
-<body background="/WordGoDie/img/login.jpeg">
+<body background="${pageContext.request.contextPath}/img/login.jpeg">
     <div style="padding: 20px; margin-left: 34%;margin-top:12%; width: 500px ;background: rgba(0,0,0,0.1)">
         <div class="layui-row layui-col-space15">
             <div class="layui-col-md12">
