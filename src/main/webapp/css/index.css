@@ -1,0 +1,27 @@
+.body-background{
+    background: #4ACE24E3;
+}
+.function-panel{
+    margin-left: 80px;
+    height: 220px;
+    width: 240px;
+    margin-top: 30px;
+    background-color: #FF5722;
+    text-align: center;
+    border-radius: 15px;
+    float: left;
+}
+.function-container{
+    padding: 0px;
+    margin: 0px;
+    height: 400px;
+}
+.function-tips{
+    margin-top: 10px;
+    padding: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: initial;
+    text-align: center;
+    margin-block-end: 10px;
+}
