@@ -20,7 +20,8 @@
                 <div style="margin-left: 180px">WordGoDie 高效学习</div>
             </div>
             <div class="layui-col-md3" style="margin-top: 10px">
-                <div>欢迎您&nbsp;${account}</div>
+                <div>欢迎您&nbsp;${account==null?cookie.account.value:account}
+                </div>
                 <div style="margin-top: 10px;margin-left: 90px">
                     <a href="${pageContext.request.contextPath}/user/logout">退出</a>
                 </div>

@@ -36,7 +36,7 @@ public class UserController {
                 session.setMaxInactiveInterval(3600*6);
                 Cookie cookie = new Cookie("account",user.getAccount());
                 cookie.setMaxAge(3600*24*7);
-                cookie.setPath("/page");
+                cookie.setPath("/");
                 response.addCookie(cookie);
                 json.put("loginStatue","success");
                 break;
@@ -79,7 +79,7 @@ public class UserController {
     public void logout(HttpServletRequest request,HttpServletResponse response) throws IOException {
         request.getSession().removeAttribute("account");
         Cookie cookie = new Cookie("account",null);
-        cookie.setMaxAge(0);
+        cookie.setPath("/");
         cookie.setMaxAge(0);
         response.addCookie(cookie);
         response.sendRedirect(request.getContextPath()+"/login.jsp");
