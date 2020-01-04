@@ -25,7 +25,7 @@
                         <div class="layui-form-item">
                             <label class="layui-form-label">密码</label>
                             <div class="layui-input-inline">
-                                <input style="width: 240px" class="layui-input" type="password" id="password" placeholder="邮箱或手机号码">
+                                <input style="width: 240px" class="layui-input" type="password" id="password">
                             </div>
                         </div>
                     </div>
