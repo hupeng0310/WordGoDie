@@ -19,7 +19,7 @@
             <div class="layui-col-md3" style="margin-top: 10px">
                 <div>欢迎您&nbsp;${account}</div>
                 <div style="margin-top: 10px;margin-left: 90px">
-                    <a >退出</a>
+                    <a href="${pageContext.request.contextPath}/user/logout">退出</a>
                 </div>
 
             </div>

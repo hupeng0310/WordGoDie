@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.*;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/user")
@@ -72,5 +73,15 @@ public class UserController {
                 break;
         }
         return json.toString();
+    }
+
+    @RequestMapping("logout")
+    public void logout(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        request.getSession().removeAttribute("account");
+        Cookie cookie = new Cookie("account",null);
+        cookie.setMaxAge(0);
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+        response.sendRedirect(request.getContextPath()+"/login.jsp");
     }
 }
