@@ -31,7 +31,6 @@ public class UserServiceImp implements UserService {
 
     @Override
     public int userLogin(User user) {
-        System.out.println(iUserDao.selectByAccount(user.getAccount()));
         if(iUserDao.selectByAccount(user.getAccount()) != 0) {
             if(iUserDao.selectByAccountAndPassword(user) != 0) {
                 return SUCCESS;

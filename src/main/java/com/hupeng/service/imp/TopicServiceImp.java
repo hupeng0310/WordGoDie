@@ -79,8 +79,18 @@ public class TopicServiceImp implements TopicService {
     }
 
     @Override
-    public Topic getTopic() {
+    public Topic getNexTopic() {
         return this.topicList.get(this.topicIndex++);
+    }
+
+    @Override
+    public Topic getLastTopic() {
+        return this.topicList.get(--this.topicIndex);
+    }
+
+    @Override
+    public Topic getTopicByIndex(int index) {
+        return this.topicList.get(index);
     }
 
     @Override
