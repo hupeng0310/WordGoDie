@@ -10,7 +10,7 @@
 <head>
     <title>WordGoDie注册-新用户注册</title>
     <script src="script/jquery.js"></script>
-    <script src="script/inputCheck.js"></script>
+    <script src="script/utils.js"></script>
     <script src="script/register.js"></script>
 </head>
 <body>
