@@ -4,12 +4,14 @@ import com.hupeng.dao.IVocabularyDao;
 import com.hupeng.entity.Vocabulary;
 import com.hupeng.service.VocabularyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 
 @Service("vocabularyService")
+@Scope("prototype")
 public class VocabularyServiceImp implements VocabularyService {
     private static int VOCABULARY_NUMBER = 20;
     @Autowired

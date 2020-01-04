@@ -4,11 +4,13 @@ import com.hupeng.entity.Topic;
 import com.hupeng.entity.Vocabulary;
 import com.hupeng.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 @Service("topicService")
+@Scope("prototype")
 public class TopicServiceImp implements TopicService {
     //设置题目的数量
     private static final int MAX_TOPIC_NUMBER = 20;
