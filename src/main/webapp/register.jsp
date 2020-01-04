@@ -9,18 +9,54 @@
 <html>
 <head>
     <title>WordGoDie注册-新用户注册</title>
-    <script src="script/jquery.js"></script>
-    <script src="script/utils.js"></script>
-    <script src="script/register.js"></script>
+    <script src="${pageContext.request.contextPath}/script/jquery.js"></script>
+    <script src="${pageContext.request.contextPath}/script/utils.js"></script>
+    <script src="${pageContext.request.contextPath}/script/register.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/script/layui/css/layui.css"  media="all">
+    <%--     单独引用layer组件   --%>
+    <script src="${pageContext.request.contextPath}/script/layui/lay/modules/layer.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/script/layui/css/modules/layer/default/layer.css">
 </head>
-<body>
-<div style="width: 300px;margin-left: 40%">
-    <h2 style="margin-left: 50%">注册</h2>
-    <p>邮箱：<input type="text" id="email"></p>
-    <p>账号：<input type="text" id="account"></p>
-    <p>密码：<input type="password" id="password"></p>
-    <a href="login.jsp">已有账号？点此登陆</a>
-    <p style="text-align: center"><input type="button" value="注册" onclick="register()"></p>
+<body background="${pageContext.request.contextPath}/img/register.jpg">
+    <div style="padding: 20px; margin-left: 34%;margin-top:12%; width: 500px ;background: rgba(0,0,0,0.1)">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header" style="text-align: center;font-weight: bold">加入WordGoDie - - 注册</div>
+                    <div class="layui-card-body">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">邮箱:</label>
+                            <div class="layui-input-inline">
+                                <input style="width: 240px" class="layui-input" type="text" id="email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-card-body">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">账号:</label>
+                            <div class="layui-input-inline">
+                                <input style="width: 240px" class="layui-input" type="text" id="account">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-card-body">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">密码</label>
+                            <div class="layui-input-inline">
+                                <input style="width: 240px" class="layui-input" type="password" id="password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-card-body">
+                        <a href="${pageContext.request.contextPath}/login.jsp">已有账号？点此登录</a>
+                    </div>
+                    <div class="layui-card-body" style="text-align: center">
+                        <button type="button" class="layui-btn" onclick="register()">注册</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
