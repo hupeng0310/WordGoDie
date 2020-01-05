@@ -6,11 +6,39 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/script/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/examination.css">
+    <script src="${pageContext.request.contextPath}/script/jquery.js"></script>
+    <script src="${pageContext.request.contextPath}/script/examination.js"></script>
     <title>WordGoDie Examination -- 正在考试中</title>
 </head>
 <body>
+    <div class="layui-container" style="background-color: #393D49;padding: 0px;margin-left: 0px;width: 100%;height: 70px">
+        <div class="layui-row">
+            <div class="layui-col-md3">
+                <div style="color: white;font-size: 16px;margin-top: 24px;margin-left: 10px">
+                    正在考试：${account==null?cookie.account.value:account}
+                </div>
+            </div>
+            <div class="layui-col-md6">
+                <div style="color: white;font-weight: bold;font-size: 30px;text-align: center;margin-top: 10px">
+                    单词拼写考试
+                </div>
+            </div>
+            <div class="layui-col-md3" style="text-align: center">
+                <div style="margin-top: 14px">
+                    <button class="layui-btn layui-btn-radius" style="background-color: #1E9FFF">
+                        我要交卷
+                    </button>
+                </div>
 
+            </div>
+        </div>
+    </div>
+    <div class="topicListPanel">
+    </div>
 </body>
 </html>

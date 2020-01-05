@@ -39,10 +39,18 @@ public class ExaminationController {
         }
         return jsonObject.toString();
     }
+
+    @RequestMapping("/topicnumber")
+    @ResponseBody
+    public int getTopicNumber() {
+        TopicService topicService = ExaminationController.topicServiceHashMap.get(this.userAccount);
+        return topicService.getTopicNumber();
+    }
+
     @ModelAttribute
     public void init(HttpServletRequest request) {
-        if(request.getParameter("account") != null) {
-            this.userAccount = request.getParameter("account");
+        if(request.getSession().getAttribute("account") != null) {
+            this.userAccount = (String)request.getSession().getAttribute("account");
         }
         //为每个用户创建topicServer对象
         if(this.userAccount != null && ExaminationController.topicServiceHashMap.get(this.userAccount) == null) {

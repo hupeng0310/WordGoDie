@@ -1,0 +1,15 @@
+body{
+    overflow: hidden;
+}
+.topicListContainer {
+    height: 100%;
+    width:200px;
+    background-color: #01AAED;
+}
+.topicListPanel{
+    height: 990px;
+    width: 200px;
+    overflow:auto;
+    background-color: #01AAED;
+    margin-bottom: 0px;
+}
