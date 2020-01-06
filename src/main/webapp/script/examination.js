@@ -14,7 +14,7 @@ $(function () {
     );
 })
 
-function getWord() {
+function getTopic() {
     $.get(
         "/WordGoDie/examination/topic",
         function (result) {
@@ -33,6 +33,20 @@ function setTopicPanel (incompleteWord,partOfSpeech,interpretation) {
     $("#interpretation").html(interpretation);
 }
 
+function getLastTopic() {
+    $.get(
+        "/WordGoDie/examination/lasttopic",
+        function (result) {
+            if(result.error != "topOfTopic") {
+                setTopicPanel(result.incompleteWord,result.partOfSpeech,result.interpretation);
+            } else {
+                layuiTips("信息","这是第一一个单词啦");
+            }
+        }
+    );
+}
+
+
 $(function () {
-    getWord();
+    getTopic();
 })

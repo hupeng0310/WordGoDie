@@ -67,7 +67,9 @@ public class TopicServiceImp implements TopicService {
     }
 
     private void initTopicList() {
-        for(Vocabulary vocabulary:vocabularyService.getVocabularies(MAX_TOPIC_NUMBER)) {
+        ArrayList<Vocabulary> vocabularies = new ArrayList<>(vocabularyService.getVocabularies(MAX_TOPIC_NUMBER));
+        this.topicList.clear();
+        for(Vocabulary vocabulary:vocabularies) {
             this.topicList.add(produceTopic(vocabulary));
         }
     }

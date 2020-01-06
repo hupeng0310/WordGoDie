@@ -42,15 +42,23 @@
         </div>
     </div>
 
-    <div><div class="topicPanel">
+    <div>
+        <div class="topicPanel">
         <div class="layui-card" style="background-color: #5FB878">
             <div class="layui-card-header topicPanelBody"id="incompleteWord"></div>
             <div class="layui-card-header topicPanelBody" id="partOfSpeech"></div>
             <div class="layui-card-header topicPanelBody" id="interpretation"></div>
         </div>
-    </div>
+        </div>
         <div class="topicListPanel"></div>
-
+        <div class="topicButtonPanel">
+            <div style="margin-left: 20px;margin-top: 20px">
+                <button class="layui-btn layui-btn-radius layui-btn-normal" style="width: 90px;float: left" onclick="getLastTopic()">上一题</button>
+            </div>
+            <div style="margin-right: 20px;margin-top: 20px">
+                <button class="layui-btn layui-btn-radius layui-btn-normal" style="float: right;width: 90px" onclick="getTopic()"> 下一题</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -23,7 +23,7 @@ body{
     height: 400px;
     width: 500px;
     background-color: #2F4056;
-    margin-top: 180px;
+    margin-top: 100px;
     margin-right: 500px;
     float: right;
     border-radius: 15px;
@@ -35,4 +35,11 @@ body{
     font-size: 20px;
     font-weight: bold;
     padding: 15px;
+}
+.topicButtonPanel {
+    width: 1352px;
+    height: 90px;
+    position: absolute;
+    top: 630px;
+    right: 0px;
 }
