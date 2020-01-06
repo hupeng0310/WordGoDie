@@ -29,16 +29,16 @@ public class TopicServiceImp implements TopicService {
     private String getInCompleteWord(String word) {
         StringBuilder wordBuilder = new StringBuilder(word);
         int wordLength = wordBuilder.length();
-        //当前单词中真实缺失字母的
+        //当前单词中真实缺失字母的长度
         int realInCompleteLength = (int)(Math.random() * wordLength * maxInComplete + 1);
         while(true) {
             //该字符串拷贝用于将随机替换为空格的字符删除，与原字符串比较，判断原字符串缺失的长度是否达到了realInCompleteLength的长度
             String wordCopy = wordBuilder.toString();
-            wordCopy = wordCopy.replace(" ","");
+            wordCopy = wordCopy.replace("_","");
             if(wordBuilder.length() - wordCopy.length() < realInCompleteLength) {
                 //生成需要隐藏字符的随机数索引
                 int ranDomIndex = (int)(Math.random() * wordLength);
-                wordBuilder.replace(ranDomIndex,ranDomIndex + 1," ");
+                wordBuilder.replace(ranDomIndex,ranDomIndex + 1,"_");
             }else {
                 return wordBuilder.toString();
             }

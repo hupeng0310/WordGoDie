@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/examination.css">
     <script src="${pageContext.request.contextPath}/script/jquery.js"></script>
     <script src="${pageContext.request.contextPath}/script/examination.js"></script>
+    <script src="${pageContext.request.contextPath}/script/layui/lay/modules/layer.js"></script>
+    <script src="${pageContext.request.contextPath}/script/utils.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/script/layui/css/modules/layer/default/layer.css">
     <title>WordGoDie Examination -- 正在考试中</title>
 </head>
 <body>
@@ -38,7 +41,16 @@
             </div>
         </div>
     </div>
-    <div class="topicListPanel">
+
+    <div><div class="topicPanel">
+        <div class="layui-card" style="background-color: #5FB878">
+            <div class="layui-card-header topicPanelBody"id="incompleteWord"></div>
+            <div class="layui-card-header topicPanelBody" id="partOfSpeech"></div>
+            <div class="layui-card-header topicPanelBody" id="interpretation"></div>
+        </div>
+    </div>
+        <div class="topicListPanel"></div>
+
     </div>
 </body>
 </html>

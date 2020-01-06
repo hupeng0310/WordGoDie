@@ -4,7 +4,7 @@ body{
 .topicListPanel{
     height: 700px;
     width: 180px;
-    overflow:scroll;
+    overflow-y:scroll;
     background-color: #01AAED;
 }.topicImg{
      height: 50px;
@@ -18,4 +18,21 @@ body{
 .topicNumber {
     margin-top: 15px;
     text-align: center;
+}
+.topicPanel {
+    height: 400px;
+    width: 500px;
+    background-color: #2F4056;
+    margin-top: 180px;
+    margin-right: 500px;
+    float: right;
+    border-radius: 15px;
+    padding: 15px;
+}
+.topicPanelBody {
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
 }
