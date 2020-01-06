@@ -77,7 +77,7 @@ function uploadAnswer() {
             $.get(
                 "/WordGoDie/examination/uploadanswer",
                 {
-                    'index':index -1,
+                    'index':index,
                     'answer':$("#answer").val()
                 }
             )

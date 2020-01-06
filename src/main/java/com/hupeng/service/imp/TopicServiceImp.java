@@ -96,7 +96,7 @@ public class TopicServiceImp implements TopicService {
         if(this.topicList == null || this.topicList.size() == 0) {
             initTopicList();
         }
-        return this.topicList.get(this.topicIndex++);
+        return this.topicList.get(++this.topicIndex);
     }
 
     @Override
@@ -112,7 +112,7 @@ public class TopicServiceImp implements TopicService {
         if(this.topicList == null || this.topicList.size() == 0) {
             initTopicList();
         }
-        this.topicIndex = index +1;
+        this.topicIndex = index;
         return this.topicList.get(index);
     }
 
