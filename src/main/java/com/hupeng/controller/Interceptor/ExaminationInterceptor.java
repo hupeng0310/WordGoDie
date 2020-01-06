@@ -12,6 +12,7 @@ public class ExaminationInterceptor extends HandlerInterceptorAdapter {
         HttpSession session = request.getSession();
         if(session.getAttribute("allowExamination") == null || !(boolean) (session.getAttribute("allowExamination"))) {
             response.sendError(403, "forbidden get examination");
+            return false;
         }
         return true;
     }

@@ -25,9 +25,9 @@ public class ExaminationController {
 
     private static HashMap<String, TopicService> topicServiceHashMap = new HashMap<>();
 
-    @RequestMapping(value = "/test",produces = "text/json;charset=utf-8")
+    @RequestMapping(value = "/topic",produces = "text/json;charset=utf-8")
     @ResponseBody
-    public String test(){
+    public String topic(){
         JSONObject jsonObject;
 
         TopicService topicService = topicServiceHashMap.get(userAccount);
