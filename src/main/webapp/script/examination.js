@@ -23,6 +23,7 @@ function setTopicPanel (incompleteWord,partOfSpeech,interpretation) {
 
 
 function getTopic() {
+    uploadAnswer();
     $.get(
         "/WordGoDie/examination/topic",
         function (result) {
@@ -38,6 +39,7 @@ function getTopic() {
 
 
 function getLastTopic() {
+    uploadAnswer();
     $.get(
         "/WordGoDie/examination/lasttopic",
         function (result) {
@@ -64,15 +66,42 @@ function getTopicByIndex(index) {
 }
 
 function topicNumberClick(id) {
+    uploadAnswer();
     getTopicByIndex(id);
 }
+//提交答案
+function uploadAnswer() {
+    $.get(
+        "/WordGoDie/examination/gettopicindex",
+        function (index) {
+            $.get(
+                "/WordGoDie/examination/uploadanswer",
+                {
+                    'index':index -1,
+                    'answer':$("#answer").val()
+                }
+            )
+        }
+    )
+}
+//交卷
+function handPaper() {
+    uploadAnswer();
+    $.get(
+        "/WordGoDie/examination/handpaper",
+        function (score) {
+            layuiTips("交卷","您一共做对"+score+"题");
+        }
+    )
+}
 
+
+//预先加载当前题号位置的题目
 $(function () {
     $.get(
         "/WordGoDie/examination/gettopicindex",
         function (index) {
-
             getTopicByIndex(parseInt(index)+1);
         }
     )
-})
+});

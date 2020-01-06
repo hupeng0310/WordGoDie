@@ -33,7 +33,7 @@
             </div>
             <div class="layui-col-md3" style="text-align: center">
                 <div style="margin-top: 14px">
-                    <button class="layui-btn layui-btn-radius" style="background-color: #1E9FFF">
+                    <button class="layui-btn layui-btn-radius" style="background-color: #1E9FFF" onclick="handPaper()">
                         我要交卷
                     </button>
                 </div>
@@ -48,6 +48,10 @@
             <div class="layui-card-header topicPanelBody"id="incompleteWord"></div>
             <div class="layui-card-header topicPanelBody" id="partOfSpeech"></div>
             <div class="layui-card-header topicPanelBody" id="interpretation"></div>
+            <div class="layui-card-body topicPanelBody" style="height: 80px">
+                <input class="layui-input " style="border-radius: 10px;height: 80px;font-size: 35px;text-align: center" id= "answer">
+            </div>
+        </div>
         </div>
         </div>
         <div class="topicListPanel"></div>

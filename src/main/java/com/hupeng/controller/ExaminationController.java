@@ -1,4 +1,5 @@
 package com.hupeng.controller;
+import com.hupeng.entity.Topic;
 import com.hupeng.service.TopicService;
 import com.hupeng.service.imp.TopicServiceImp;
 import org.json.JSONObject;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @Controller
@@ -22,6 +25,7 @@ public class ExaminationController {
     private String userAccount;
 
     private static HashMap<String, TopicService> topicServiceHashMap = new HashMap<>();
+    private static HashMap<String,HashMap<Integer,String>> userAnswer = new HashMap<>();
 
     @RequestMapping(value = "/topic",produces = "text/json;charset=utf-8")
     @ResponseBody
@@ -58,7 +62,7 @@ public class ExaminationController {
     public String indexOfTopic(int index) {
         TopicService topicService = ExaminationController.topicServiceHashMap.get(this.userAccount);
         JSONObject jsonObject;
-        if(index < 1 || index >=topicService.getTopicNumber()) {
+        if(index < 1 || index >topicService.getTopicNumber()) {
             jsonObject = new JSONObject();
             jsonObject.put("error","outOfBounds");
         }else {
@@ -82,6 +86,7 @@ public class ExaminationController {
         //为每个用户创建topicServer对象
         if(this.userAccount != null && ExaminationController.topicServiceHashMap.get(this.userAccount) == null) {
             ExaminationController.topicServiceHashMap.put(this.userAccount,topicService);
+            ExaminationController.userAnswer.put(userAccount, new HashMap<>());
         }
     }
 
@@ -89,7 +94,37 @@ public class ExaminationController {
     @ResponseBody
     public String getTopicIndex() {
         TopicService topicService = ExaminationController.topicServiceHashMap.get(this.userAccount);
-        System.out.println(topicService.toString());
         return topicService.getTopicIndex()+"";
+    }
+
+    //用户上传答案
+    @RequestMapping("/uploadanswer")
+    @ResponseBody
+    public void uploadAnswer(String index,String answer) {
+        HashMap<Integer,String> answers = ExaminationController.userAnswer.get(userAccount);
+        answers.put(Integer.parseInt(index),answer);
+    }
+
+    @RequestMapping("/handpaper")
+    @ResponseBody
+    public String handPaper() {
+        int score = 0;
+        TopicService topicService = ExaminationController.topicServiceHashMap.get(this.userAccount);
+
+        HashMap<Integer,String> answers = ExaminationController.userAnswer.get(this.userAccount);
+        //test
+        for(Integer index:answers.keySet()) {
+            System.out.println("编号：" + index +" 答案:" + answers.get(index) );
+        }
+        for(int i = 0; i < topicService.getTopicNumber();i++) {
+            String userAnswer = answers.get(i);
+            if (userAnswer != null && topicService.getTopicByIndex(i).getWord().equals(userAnswer)){
+            System.out.println("循环中,正确答案为" + topicService.getTopicByIndex(i).getWord());
+            System.out.println("循环中，我的答案为" + userAnswer);
+            score++;
+            }
+        }
+        ExaminationController.topicServiceHashMap.remove(userAccount);
+        return score+"";
     }
 }
