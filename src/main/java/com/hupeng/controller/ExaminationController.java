@@ -57,7 +57,14 @@ public class ExaminationController {
     @ResponseBody
     public String indexOfTopic(int index) {
         TopicService topicService = ExaminationController.topicServiceHashMap.get(this.userAccount);
-        return new JSONObject(topicService.getTopicByIndex(index)).toString();
+        JSONObject jsonObject;
+        if(index < 1 || index >=topicService.getTopicNumber()) {
+            jsonObject = new JSONObject();
+            jsonObject.put("error","outOfBounds");
+        }else {
+            jsonObject = new JSONObject(topicService.getTopicByIndex(index - 1));
+        }
+        return jsonObject.toString();
     }
 
     @RequestMapping("/topicnumber")
@@ -76,5 +83,13 @@ public class ExaminationController {
         if(this.userAccount != null && ExaminationController.topicServiceHashMap.get(this.userAccount) == null) {
             ExaminationController.topicServiceHashMap.put(this.userAccount,topicService);
         }
+    }
+
+    @RequestMapping("/gettopicindex")
+    @ResponseBody
+    public String getTopicIndex() {
+        TopicService topicService = ExaminationController.topicServiceHashMap.get(this.userAccount);
+        System.out.println(topicService.toString());
+        return topicService.getTopicIndex()+"";
     }
 }

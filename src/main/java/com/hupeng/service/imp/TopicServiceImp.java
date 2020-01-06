@@ -72,6 +72,7 @@ public class TopicServiceImp implements TopicService {
         for(Vocabulary vocabulary:vocabularies) {
             this.topicList.add(produceTopic(vocabulary));
         }
+        this.topicIndex = 0;
     }
 
     @Override
@@ -121,5 +122,10 @@ public class TopicServiceImp implements TopicService {
             initTopicList();
         }
         return this.topicList.size();
+    }
+
+    @Override
+    public int getTopicIndex() {
+        return this.topicIndex;
     }
 }

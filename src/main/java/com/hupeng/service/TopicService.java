@@ -9,4 +9,5 @@ public interface TopicService {
      Topic getLastTopic();
      Topic getTopicByIndex(int index);
      int getTopicNumber();
+     int getTopicIndex();
 }
