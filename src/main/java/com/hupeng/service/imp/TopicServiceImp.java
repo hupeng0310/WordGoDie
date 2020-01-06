@@ -13,7 +13,7 @@ import java.util.ArrayList;
 @Scope("prototype")
 public class TopicServiceImp implements TopicService {
     //设置题目的数量
-    private static final int MAX_TOPIC_NUMBER = 20;
+    private static final int MAX_TOPIC_NUMBER = 30;
 
     //设置单词中最大可缺失的字母比例
     private static final double maxInComplete = 0.5d;

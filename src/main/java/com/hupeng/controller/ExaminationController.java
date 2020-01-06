@@ -56,7 +56,5 @@ public class ExaminationController {
         if(this.userAccount != null && ExaminationController.topicServiceHashMap.get(this.userAccount) == null) {
             ExaminationController.topicServiceHashMap.put(this.userAccount,topicService);
         }
-        System.out.println("账号"+ this.userAccount);
-        System.out.println("topicServer" + ExaminationController.topicServiceHashMap.get(userAccount).hashCode());
     }
 }

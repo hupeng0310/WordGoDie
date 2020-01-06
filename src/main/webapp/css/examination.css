@@ -1,15 +1,21 @@
 body{
     overflow: hidden;
 }
-.topicListContainer {
-    height: 100%;
-    width:200px;
-    background-color: #01AAED;
-}
 .topicListPanel{
-    height: 990px;
-    width: 200px;
-    overflow:auto;
+    height: 700px;
+    width: 180px;
+    overflow:scroll;
     background-color: #01AAED;
-    margin-bottom: 0px;
+}.topicImg{
+     height: 50px;
+     width: 50px;
+     border-radius:25px;
+    background-color: #393D49;
+    float:left;
+    margin-left: 20px;
+    margin-top: 15px;
+ }
+.topicNumber {
+    margin-top: 15px;
+    text-align: center;
 }
