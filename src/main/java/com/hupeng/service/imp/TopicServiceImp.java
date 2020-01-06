@@ -73,6 +73,14 @@ public class TopicServiceImp implements TopicService {
     }
 
     @Override
+    public boolean topOfTopic() {
+        if(this.topicList == null || this.topicList.size() == 0) {
+            initTopicList();
+        }
+        return this.topicIndex == 0;
+    }
+
+    @Override
     public boolean endOfTopic() {
         if(this.topicList == null || this.topicList.size() == 0) {
             initTopicList();
@@ -82,16 +90,26 @@ public class TopicServiceImp implements TopicService {
 
     @Override
     public Topic getNexTopic() {
+        if(this.topicList == null || this.topicList.size() == 0) {
+            initTopicList();
+        }
         return this.topicList.get(this.topicIndex++);
     }
 
     @Override
     public Topic getLastTopic() {
+        if(this.topicList == null || this.topicList.size() == 0) {
+            initTopicList();
+        }
         return this.topicList.get(--this.topicIndex);
     }
 
     @Override
     public Topic getTopicByIndex(int index) {
+        if(this.topicList == null || this.topicList.size() == 0) {
+            initTopicList();
+        }
+        this.topicIndex = index;
         return this.topicList.get(index);
     }
 

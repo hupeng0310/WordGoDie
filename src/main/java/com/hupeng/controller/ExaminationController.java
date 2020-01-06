@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 @Controller
@@ -38,6 +36,28 @@ public class ExaminationController {
             jsonObject.put("error","endOfTopic");
         }
         return jsonObject.toString();
+    }
+
+    @RequestMapping(value = "/lasttopic",produces = "text/json;charset=utf-8")
+    @ResponseBody
+    public String lastTopic() {
+        JSONObject jsonObject;
+
+        TopicService topicService = ExaminationController.topicServiceHashMap.get(userAccount);
+        if(!topicService.topOfTopic()) {
+            jsonObject = new JSONObject(topicService.getLastTopic());
+        } else {
+            jsonObject = new JSONObject();
+            jsonObject.put("error","topOfTopic");
+        }
+        return jsonObject.toString();
+    }
+
+    @RequestMapping(value = "/indexoftopic",produces = "text/json;charset=utf8")
+    @ResponseBody
+    public String indexOfTopic(int index) {
+        TopicService topicService = ExaminationController.topicServiceHashMap.get(this.userAccount);
+        return new JSONObject(topicService.getTopicByIndex(index)).toString();
     }
 
     @RequestMapping("/topicnumber")

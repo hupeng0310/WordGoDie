@@ -31,15 +31,16 @@
     <div class="function-container" style="margin-top: 250px">
         <div class="function-panel" style="margin-left: 300px">
             <div class="function-tips">
-                补全单词<br/>
-                共计二十题
+                单词拼写<br/>
+                补全部分单词
+
             </div>
             <button type="button" class="layui-btn layui-btn-lg layui-btn-primary layui-btn-radius" style="background-color: white" onclick="goExamination('completion')">开始测试</button>
         </div>
         <div class="function-panel">
             <div class="function-tips">
-                选择单词的释义<br/>
-                共计二十题
+                单词翻译<br/>
+                单项选择单词释义
             </div>
             <button type="button" class="layui-btn layui-btn-lg layui-btn-primary layui-btn-radius" style="background-color: white" onclick="goExamination('choice')">开始测试</button>
         </div>
