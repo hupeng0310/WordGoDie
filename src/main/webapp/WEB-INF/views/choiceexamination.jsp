@@ -33,7 +33,7 @@
             </div>
             <div class="layui-col-md3" style="text-align: center">
                 <div style="margin-top: 14px">
-                    <button class="layui-btn layui-btn-radius" style="background-color: #1E9FFF" onclick="handPaper()">
+                    <button class="layui-btn layui-btn-radius" style="background-color: #1E9FFF" onclick="handPaperButton()">
                         我要交卷
                     </button>
                 </div>

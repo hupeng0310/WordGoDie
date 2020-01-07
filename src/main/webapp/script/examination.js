@@ -84,15 +84,22 @@ function uploadAnswer() {
         }
     )
 }
-//交卷
+function handPaperButton() {
+    layer.open({
+        type: 1
+        ,offset: 'auto'
+        ,id: 'layerDemo'+'hanPaperButton' //防止重复弹出
+        ,content: '<div style="padding: 20px 100px;"> 确认交卷？</div>'
+        ,btn: '确认'
+        ,btnAlign: 'c' //按钮居中
+        ,shade: 0 //不显示遮罩
+        ,yes: function(){
+            handPaper();
+        }
+    });
+}
+//交卷功能
 function handPaper() {
-    // uploadAnswer();
-    // $.get(
-    //     "/WordGoDie/examination/handpaper",
-    //     function (score) {
-    //         layuiTips("交卷","您一共做对"+score+"题");
-    //     }
-    // )
     $.get(
         "/WordGoDie/examination/gettopicindex",
         function (index) {
@@ -106,7 +113,18 @@ function handPaper() {
                     $.get(
                         "/WordGoDie/examination/handpaper",
                              function (score) {
-                                 layuiTips("交卷","您一共做对"+score+"题");
+                                 layer.open({
+                                     type: 1
+                                     ,offset: 'auto'
+                                     ,id: 'layerDemo'+'handPaper' //防止重复弹出
+                                     ,content: '<div style="padding: 20px 100px;"> 交卷成功，您一共作对'+score+ '题</div>'
+                                     ,btn: '确认'
+                                     ,btnAlign: 'c' //按钮居中
+                                     ,shade: 0 //不显示遮罩
+                                     ,yes: function(){
+                                         window.location.href = "/WordGoDie/page?target=index";
+                                     }
+                                 });
                              }
                     );
                 }
