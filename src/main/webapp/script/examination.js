@@ -134,12 +134,12 @@ function handPaper() {
 }
 
 
-//预先加载当前题号位置的题目
+//初始化预先加载当前题号位置的题目
 $(function () {
     $.get(
         "/WordGoDie/examination/gettopicindex",
         function (index) {
-            getTopicByIndex(parseInt(index)+1);
+                getTopicByIndex(parseInt(index) + 1);
         }
     )
 });
