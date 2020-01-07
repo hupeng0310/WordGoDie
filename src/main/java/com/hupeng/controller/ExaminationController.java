@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 @Controller
@@ -110,17 +108,10 @@ public class ExaminationController {
     public String handPaper() {
         int score = 0;
         TopicService topicService = ExaminationController.topicServiceHashMap.get(this.userAccount);
-
         HashMap<Integer,String> answers = ExaminationController.userAnswer.get(this.userAccount);
-        //test
-        for(Integer index:answers.keySet()) {
-            System.out.println("编号：" + index +" 答案:" + answers.get(index) );
-        }
         for(int i = 0; i < topicService.getTopicNumber();i++) {
             String userAnswer = answers.get(i);
             if (userAnswer != null && topicService.getTopicByIndex(i).getWord().equals(userAnswer)){
-            System.out.println("循环中,正确答案为" + topicService.getTopicByIndex(i).getWord());
-            System.out.println("循环中，我的答案为" + userAnswer);
             score++;
             }
         }

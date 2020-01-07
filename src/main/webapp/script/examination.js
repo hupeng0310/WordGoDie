@@ -86,11 +86,31 @@ function uploadAnswer() {
 }
 //交卷
 function handPaper() {
-    uploadAnswer();
+    // uploadAnswer();
+    // $.get(
+    //     "/WordGoDie/examination/handpaper",
+    //     function (score) {
+    //         layuiTips("交卷","您一共做对"+score+"题");
+    //     }
+    // )
     $.get(
-        "/WordGoDie/examination/handpaper",
-        function (score) {
-            layuiTips("交卷","您一共做对"+score+"题");
+        "/WordGoDie/examination/gettopicindex",
+        function (index) {
+            $.get(
+                "/WordGoDie/examination/uploadanswer",
+                {
+                    'index':index,
+                    'answer':$("#answer").val()
+                },
+                function () {
+                    $.get(
+                        "/WordGoDie/examination/handpaper",
+                             function (score) {
+                                 layuiTips("交卷","您一共做对"+score+"题");
+                             }
+                    );
+                }
+            )
         }
     )
 }
