@@ -48,4 +48,9 @@ public class UserServiceImp implements UserService {
             return ACCOUNT_NOT_FOUND;
         }
     }
+
+    @Override
+    public int getUserId(String account) {
+        return this.iUserDao.getUserIdByAccout(account);
+    }
 }

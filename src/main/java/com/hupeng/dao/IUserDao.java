@@ -22,4 +22,7 @@ public interface IUserDao {
 
     @Insert("insert into user(email,account,password) values(#{user.email},#{user.account},md5(#{user.password}))")
     int addUser(@Param("user")User user);
+
+    @Select("select id from user where account = #{account} or email = #{account}")
+    int getUserIdByAccout(@Param("account") String account);
 }

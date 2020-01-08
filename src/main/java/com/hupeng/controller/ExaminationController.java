@@ -1,7 +1,12 @@
 package com.hupeng.controller;
+import com.hupeng.dao.IUserDao;
+import com.hupeng.entity.ExaminationInfo;
 import com.hupeng.entity.Topic;
+import com.hupeng.service.ExaminationInfoService;
 import com.hupeng.service.TopicService;
+import com.hupeng.service.imp.ExaminationInfoServiceImp;
 import com.hupeng.service.imp.TopicServiceImp;
+import com.hupeng.service.imp.UserServiceImp;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -11,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.HashMap;
 
 @Controller
@@ -19,6 +25,12 @@ import java.util.HashMap;
 public class ExaminationController {
     @Autowired
     private TopicServiceImp topicService;
+
+    @Autowired
+    ExaminationInfoServiceImp examinationInfoService;
+
+    @Autowired
+    UserServiceImp userService;
 
     private String userAccount;
 
@@ -116,6 +128,12 @@ public class ExaminationController {
             }
         }
         ExaminationController.topicServiceHashMap.remove(userAccount);
+        //添加考试记录
+        ExaminationInfo examinationInfo = new ExaminationInfo();
+        examinationInfo.setId(this.userService.getUserId(this.userAccount));
+        examinationInfo.setPass_topic(score);
+        examinationInfo.setTopic_num(topicService.getTopicNumber());
+        examinationInfoService.addExaminationInfo(examinationInfo);
         return score+"";
     }
 }
