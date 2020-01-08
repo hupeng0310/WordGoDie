@@ -1,10 +1,13 @@
 package com.hupeng.dao;
 
 import com.hupeng.entity.User;
+import com.hupeng.entity.UserExaminationInfo;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface IUserDao {
@@ -25,4 +28,7 @@ public interface IUserDao {
 
     @Select("select id from user where account = #{account} or email = #{account}")
     int getUserIdByAccout(@Param("account") String account);
+
+    @Select("select user.account,examination.pass_topic,examination.topic_num,examination.hand_date from user,examination where user.id = #{id}")
+    List<UserExaminationInfo> getExaminationInfoByID(int id);
 }

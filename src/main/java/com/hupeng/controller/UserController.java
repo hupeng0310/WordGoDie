@@ -2,9 +2,11 @@ package com.hupeng.controller;
 
 import com.hupeng.entity.User;
 import com.hupeng.service.imp.UserServiceImp;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -82,5 +84,12 @@ public class UserController {
         cookie.setMaxAge(0);
         response.addCookie(cookie);
         response.sendRedirect(request.getContextPath()+"/login.jsp");
+    }
+
+    @RequestMapping(value = "/examinationinfo",produces = "text/json;charset=utf8")
+    @ResponseBody
+    public String getExaminationInfo(String account) {
+        JSONArray jsonArray = new JSONArray(this.userService.getUserExaminationInfoByID(userService.getUserId(account)));
+        return jsonArray.toString();
     }
 }

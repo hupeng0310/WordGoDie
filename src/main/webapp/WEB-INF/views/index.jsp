@@ -19,10 +19,13 @@
             <div class="layui-col-md6" style="font-size: 30px;font-weight: bold;color: white; margin-top: 10px">
                 <div style="margin-left: 300px">WordGoDie 高效学习</div>
             </div>
-            <div class="layui-col-md2" style="margin-top: 10px;margin-right: 0px">
-                <div style="text-align: right">
-                    <div>欢迎您&nbsp;${account==null?cookie.account.value:account}</div>
-                    <div style="margin-top: 10px;margin-left: 90px">
+            <div class="layui-col-md2" style="margin-top: 10px;margin-right: 0px;text-align: center">
+                <div>
+                    <div style="margin-left: 10px;">
+                        欢迎您&nbsp;
+                        <div id="account">
+                            ${account==null?cookie.account.value:account}
+                        </div>
                         <a href="${pageContext.request.contextPath}/user/logout">退出</a>
                     </div>
                 </div>

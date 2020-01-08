@@ -2,9 +2,12 @@ package com.hupeng.service.imp;
 
 import com.hupeng.dao.IUserDao;
 import com.hupeng.entity.User;
+import com.hupeng.entity.UserExaminationInfo;
 import com.hupeng.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -52,5 +55,11 @@ public class UserServiceImp implements UserService {
     @Override
     public int getUserId(String account) {
         return this.iUserDao.getUserIdByAccout(account);
+    }
+
+    @Override
+    public List<UserExaminationInfo> getUserExaminationInfoByID(int id) {
+        System.out.println("用户id" + id);
+        return this.iUserDao.getExaminationInfoByID(id);
     }
 }

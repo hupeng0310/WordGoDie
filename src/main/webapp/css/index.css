@@ -25,3 +25,11 @@
     text-align: center;
     margin-block-end: 10px;
 }
+.examination-tb{
+    height: 25px;
+    width: 100px;
+    text-align: center;
+}
+.table-div{
+    overflow-y: scroll;
+}
