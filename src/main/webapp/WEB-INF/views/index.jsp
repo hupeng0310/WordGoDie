@@ -13,17 +13,23 @@
 <body background="${pageContext.request.contextPath}/img/index.jpg" >
     <div class="layui-container" style="background-color: #1E9FFF;padding: 0px;margin-left: 0px;width: 100%;height: 70px">
         <div class="layui-row">
-            <div class="layui-col-md3">
+            <div class="layui-col-md2">
                 &nbsp;
             </div>
             <div class="layui-col-md6" style="font-size: 30px;font-weight: bold;color: white; margin-top: 10px">
-                <div style="margin-left: 180px">WordGoDie 高效学习</div>
+                <div style="margin-left: 300px">WordGoDie 高效学习</div>
             </div>
-            <div class="layui-col-md3" style="margin-top: 10px">
-                <div>欢迎您&nbsp;${account==null?cookie.account.value:account}
+            <div class="layui-col-md2" style="margin-top: 10px;margin-right: 0px">
+                <div style="text-align: right">
+                    <div>欢迎您&nbsp;${account==null?cookie.account.value:account}</div>
+                    <div style="margin-top: 10px;margin-left: 90px">
+                        <a href="${pageContext.request.contextPath}/user/logout">退出</a>
+                    </div>
                 </div>
-                <div style="margin-top: 10px;margin-left: 90px">
-                    <a href="${pageContext.request.contextPath}/user/logout">退出</a>
+            </div>
+            <div class="layui-col-md2">
+                <div style="text-align: right;margin-right: 30px;margin-top: 12px">
+                <input type="button" class="layui-btn" onclick="showExamination()" value="考试信息">
                 </div>
             </div>
         </div>
