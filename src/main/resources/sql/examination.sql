@@ -26,7 +26,7 @@ CREATE TABLE `examination` (
   `id` int(11) DEFAULT NULL,
   `pass_topic` int(11) NOT NULL,
   `topic_num` int(11) NOT NULL,
-  `hand_date` date NOT NULL,
+  `hand_date` datetime NOT NULL,
   KEY `examination_user_id_fk` (`id`),
   CONSTRAINT `examination_user_id_fk` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -38,7 +38,7 @@ CREATE TABLE `examination` (
 
 LOCK TABLES `examination` WRITE;
 /*!40000 ALTER TABLE `examination` DISABLE KEYS */;
-INSERT INTO `examination` VALUES (1,2,3,'2020-01-08');
+INSERT INTO `examination` VALUES (4,1,24,'2020-01-08 18:48:42'),(4,1,24,'2020-01-08 18:49:36'),(4,1,24,'2020-01-08 19:05:24'),(1,1,24,'2020-01-09 00:18:42');
 /*!40000 ALTER TABLE `examination` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-08 10:38:43
+-- Dump completed on 2020-01-09  8:38:52
