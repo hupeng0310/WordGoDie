@@ -8,13 +8,14 @@ body{
     background-color: #01AAED;
 }
 .topicImg{
-     height: 50px;
-     width: 50px;
-     border-radius:25px;
+    height: 50px;
+    width: 50px;
+    border-radius:25px;
     background-color: #393D49;
     float:left;
     margin-left: 20px;
     margin-top: 15px;
+    cursor: pointer;
  }
 .topicNumber {
     margin-top: 15px;

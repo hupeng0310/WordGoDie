@@ -6,7 +6,7 @@ $(function () {
         function (result) {
             panel.innerHTML="";
             for(var i = 1; i <= result; i++) {
-                panel.html(panel.innerHTML+= "<div class='topicImg'><div class='topicNumber' id = '"+ i+"' onclick='topicNumberClick(this.id)'>"+i+ "</div></div>");
+                panel.html(panel.innerHTML+= "<div class='topicImg' id = '"+ i+"' onclick='topicNumberClick(this.id)' onmouseover=\"topicImgOnMouseOver(this.id)\" onmouseout=\"topicImgOnMouseOut(this.id)\"><div class='topicNumber'>"+i+ "</div></div>");
                 if(i == (result -1)) {
                     panel.html(panel.innerHTML + "<div style='height: 25px;width: 180px'>&nbsp;sss</div>")
                 }
@@ -164,14 +164,9 @@ $(function () {
     )
 });
 
-//当前被选择的题目
+//主页刷新时当前被选择的题目题号变色
 $(function () {
-    $.get(
-        "/WordGoDie/examination/gettopicindex",
-        function (index) {
-            $(".topicImg:eq(" + index+")").css("background-color",'#5FB878');
-        }
-    )
+    onCheckedTopicNumberColor();
 })
 
 //修改当前被选择的题目题号颜色
@@ -180,10 +175,24 @@ function onCheckedTopicNumberColor() {
     $.get(
         "/WordGoDie/examination/gettopicindex",
         function (index) {
-            $(".topicImg:eq(" + index+")").css("background-color",'#5FB878');
+            $(".topicImg:eq(" + index+")").css("background-color","#FF5722");
         }
     )
 }
+//鼠标浮动题号变色
+function topicImgOnMouseOver(id) {
+    if($("#"+id).css("background-color") != "rgb(255, 87, 34)"){
+        $("#"+id).css("background-color","#5FB878");
+    }
+
+}
+
+function topicImgOnMouseOut(id) {
+    if($("#"+id).css("background-color") != "rgb(255, 87, 34)"){
+        $("#"+id).css("background-color","#2F4056");
+    }
+}
+
 function clearAnswerInput() {
     $("#answer").val("");
 }
