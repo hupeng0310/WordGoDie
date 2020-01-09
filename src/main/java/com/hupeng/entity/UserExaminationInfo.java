@@ -1,5 +1,6 @@
 package com.hupeng.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class UserExaminationInfo {
@@ -32,11 +33,13 @@ public class UserExaminationInfo {
         this.topic_num = topic_num;
     }
 
-    public Date getHand_date() {
-        return hand_date;
+    public String getHand_date() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return simpleDateFormat.format(this.hand_date);
     }
 
     public void setHand_date(Date hand_date) {
+        System.out.println("测试");
         this.hand_date = hand_date;
     }
 }
