@@ -29,11 +29,13 @@ function getTopic() {
         function (result) {
             if(result.error != "endOfTopic") {
                 setTopicPanel(result.incompleteWord,result.partOfSpeech,result.interpretation);
+                onCheckedTopicNumberColor();
             } else {
                 layuiTips("信息","这是最后一个单词啦");
             }
         }
     );
+
 }
 
 
@@ -45,11 +47,13 @@ function getLastTopic() {
         function (result) {
             if(result.error != "topOfTopic") {
                 setTopicPanel(result.incompleteWord,result.partOfSpeech,result.interpretation);
+                onCheckedTopicNumberColor();
             } else {
                 layuiTips("信息","这是第一一个单词啦");
             }
         }
     );
+
 }
 
 function getTopicByIndex(index) {
@@ -67,7 +71,17 @@ function getTopicByIndex(index) {
 
 function topicNumberClick(id) {
     uploadAnswer();
-    getTopicByIndex(id);
+    $.get(
+        "/WordGoDie/examination/indexoftopic?index=" + id,
+        function (result) {
+            if(result.error == "outOfBounds") {
+                layuiTips("警告","没有这个单词");
+            } else {
+                setTopicPanel(result.incompleteWord,result.partOfSpeech,result.interpretation);
+                onCheckedTopicNumberColor();
+            }
+        }
+    );
 }
 //提交答案
 function uploadAnswer() {
@@ -84,6 +98,7 @@ function uploadAnswer() {
         }
     )
 }
+
 function handPaperButton() {
     layer.open({
         type: 1
@@ -143,3 +158,24 @@ $(function () {
         }
     )
 });
+
+//当前被选择的题目
+$(function () {
+    $.get(
+        "/WordGoDie/examination/gettopicindex",
+        function (index) {
+            $(".topicImg:eq(" + index+")").css("background-color",'#5FB878');
+        }
+    )
+})
+
+//修改当前被选择的题目题号颜色
+function onCheckedTopicNumberColor() {
+    $(".topicImg").css("background-color","#2F4056");
+    $.get(
+        "/WordGoDie/examination/gettopicindex",
+        function (index) {
+            $(".topicImg:eq(" + index+")").css("background-color",'#5FB878');
+        }
+    )
+}

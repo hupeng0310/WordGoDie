@@ -6,7 +6,8 @@ body{
     width: 180px;
     overflow-y:scroll;
     background-color: #01AAED;
-}.topicImg{
+}
+.topicImg{
      height: 50px;
      width: 50px;
      border-radius:25px;
