@@ -95,7 +95,7 @@ public class ExaminationController {
         //为每个用户创建topicServer对象
         if(this.userAccount != null && ExaminationController.topicServiceHashMap.get(this.userAccount) == null) {
             ExaminationController.topicServiceHashMap.put(this.userAccount,topicService);
-            ExaminationController.userAnswer.put(userAccount, new HashMap<>());
+            ExaminationController.userAnswer.put(userAccount, new HashMap<Integer, String>());
         }
     }
 
