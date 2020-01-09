@@ -39,7 +39,6 @@ public class UserExaminationInfo {
     }
 
     public void setHand_date(Date hand_date) {
-        System.out.println("测试");
         this.hand_date = hand_date;
     }
 }

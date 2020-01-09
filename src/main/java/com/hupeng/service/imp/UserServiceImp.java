@@ -59,7 +59,6 @@ public class UserServiceImp implements UserService {
 
     @Override
     public List<UserExaminationInfo> getUserExaminationInfoByID(int id) {
-        System.out.println("用户id" + id);
         return this.iUserDao.getExaminationInfoByID(id);
     }
 }

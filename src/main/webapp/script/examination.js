@@ -1,3 +1,4 @@
+//预加载题目列表
 $(function () {
     var panel = $(".topicListPanel");
     $.get(
@@ -23,6 +24,7 @@ function setTopicPanel (incompleteWord,partOfSpeech,interpretation) {
 
 
 function getTopic() {
+    clearAnswerInput();
     uploadAnswer();
     $.get(
         "/WordGoDie/examination/topic",
@@ -41,6 +43,7 @@ function getTopic() {
 
 
 function getLastTopic() {
+    clearAnswerInput();
     uploadAnswer();
     $.get(
         "/WordGoDie/examination/lasttopic",
@@ -69,7 +72,9 @@ function getTopicByIndex(index) {
     );
 }
 
+//点击按钮图标切换题目
 function topicNumberClick(id) {
+    clearAnswerInput();
     uploadAnswer();
     $.get(
         "/WordGoDie/examination/indexoftopic?index=" + id,
@@ -178,4 +183,7 @@ function onCheckedTopicNumberColor() {
             $(".topicImg:eq(" + index+")").css("background-color",'#5FB878');
         }
     )
+}
+function clearAnswerInput() {
+    $("#answer").val("");
 }
