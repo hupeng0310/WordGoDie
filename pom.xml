@@ -19,7 +19,7 @@
     <maven.compiler.target>1.7</maven.compiler.target>
     <!-- 定义依赖版本 -->
     <!--  Spring版本  -->
-    <spring.version>5.2.2.RELEASE</spring.version>
+    <spring.version>5.3.18</spring.version>
     <!-- mybatis版本  -->
     <mybatis.version>3.5.3</mybatis.version>
     <!-- mybatis-Spring版本 -->
